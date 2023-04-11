@@ -1,0 +1,43 @@
+[user]
+	name = Ray Pendergraph
+	email = rpendergraph@circadence.com
+[mailmap]
+	file = ~/.circadence-config/git-mailmap
+[alias]
+	co = checkout
+	ll = log --graph --abbrev-commit --decorate --date=format:'%e-%b %H:%M' --format=format:' %C(ul)%C(dim white)%ad%C(reset) - %C(reverse red)%aN%C(reset)%C(bold blue) %h %C(bold yellow)%d%C(reset) %n''      %C(white)%s%C(reset) %C(dim white) %C(reset)' --all
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[core]
+	excludesfile = /Users/rpendergraph/.gitignore_global
+[commit]
+	template = /Users/rpendergraph/.stCommitMsg
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff
+[log]
+	date = local
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
