@@ -1,0 +1,5 @@
+cryptography
+rich
+typer
+urllib3
+

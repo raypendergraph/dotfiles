@@ -2,3 +2,8 @@
 zsh/.zcompdump
 zsh/.zi/
 zsh/.zsh_history
+zsh/.histfile
+
+
+#neovim
+nvim/plugin/*
