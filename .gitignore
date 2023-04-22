@@ -7,3 +7,8 @@ zsh/.histfile
 
 #neovim
 nvim/plugin/*
+
+
+# python 
+__pycache__/
+
