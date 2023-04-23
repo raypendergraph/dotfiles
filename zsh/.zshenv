@@ -1,6 +1,7 @@
 export XDG_CONFIG_HOME="${HOME}/.config"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-export EDITOR="nvim"
-export VISUAL="nvim"
+export PYTHONPATH="${XDG_CONFIG_HOME}/python:${PYTHONPATH}"
+export EDITOR=nvim
+export VISUAL=nvim
 
 

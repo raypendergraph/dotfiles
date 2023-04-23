@@ -1,0 +1,7 @@
+#compdef ut
+
+_ut_completion() {
+   eval $(env _TYPER_COMPLETE_ARGS="${words[1,$CURRENT]}" _UT_COMPLETE=complete_zsh ut)
+}
+
+compdef _ut_completion ut

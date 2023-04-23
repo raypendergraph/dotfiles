@@ -6,7 +6,7 @@ import typer
 
 logger = logging.getLogger(__name__)
 
-def dump_certificate_chain(
+def dump_chain(
         host: str = typer.Argument(..., help='The remote host'), 
         port: int = typer.Argument(..., help='The remote port'),
         rich: bool = typer.Option(False, help='Enhanced formatting output in rich text. Default is false' )):

@@ -4,6 +4,6 @@ app = typer.Typer()
 
 def _load():
     from . import commands
-    app.command('dump-cert-chain')(commands.dump_certificate_chain)
+    app.command('dump-chain')(commands.dump_chain)
 
 _load()

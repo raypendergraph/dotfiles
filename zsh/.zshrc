@@ -1,47 +1,34 @@
-
 setopt AUTO_CD 
 setopt AUTO_PUSHD
 setopt EXTENDED_GLOB
 setopt HIST_SAVE_NO_DUPS
 setopt PUSHD_SILENT
 
-fpath=(${ZDOTDIR}/completions ${fpath})
-HISTFILE=~/.config/zsh/.histfile
+HISTFILE="${HOME}/.histfile"
 HISTSIZE=5000
 SAVEHIST=5000
+export ZI="${HOME}/.zi" 
+
 bindkey -v
-
+fpath=(${ZDOTDIR}/.zfunc ${fpath})
 zstyle :compinstall filename '${ZDOTDIR}/.zshrc'
-
-autoload -Uz compinit
-compinit -i
-# End of lines added by compinstall
+zstyle ':completion:*' menu select
 
 # Begin custom setup
 _comp_options+=(globdots)
 
-source ${ZDOTDIR}/aliases
-source ${ZDOTDIR}/scripts.zsh
+source "${ZDOTDIR}/aliases"
+source "${ZDOTDIR}/setup.zsh"
 
-# Setup Zi - installed with sh -c "$(curl -fsSL get.zshell.dev)" --
-if [[ ! -f ${ZDOTDIR}/.zi/bin/zi.zsh ]]; then
-  print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
-  command mkdir -p "${ZDOTDIR}/.zi" && command chmod go-rwX "${ZDOTDIR}/.zi"
-  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "${ZDOTDIR}/.zi/bin" && \
-    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-    print -P "%F{160}▓▒░ The clone has failed.%f%b"
+# To prevent stupid untrusted paths warning. I don't control whene everyone calls compinit. 
+if [[ $(uname) == "Darwin" ]]; then
+   alias compinit='compinit -u -i'
 fi
-source "${ZDOTDIR}/.zi/bin/zi.zsh"
-autoload -Uz _zi
+source "${HOME}/.zi/bin/zi.zsh"
 (( ${+_comps} )) && _comps[zi]=_zi
-# examples here -> https://wiki.zshell.dev/ecosystem/category/-annexes
-zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
+
+source "${ZDOTDIR}/functions.zsh"
+autoload -Uz compinit && compinit
 
 
-zi wait lucid for \
-  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-     z-shell/F-Sy-H \
-  blockf \
-     zsh-users/zsh-completions \
-  atload"!_zsh_autosuggest_start" \
-     zsh-users/zsh-autosuggestions
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

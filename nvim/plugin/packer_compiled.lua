@@ -144,11 +144,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/ray/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-sneak"] = {
-    loaded = true,
-    path = "/Users/ray/.local/share/nvim/site/pack/packer/start/vim-sneak",
-    url = "https://github.com/justinmk/vim-sneak"
   }
 }
 
