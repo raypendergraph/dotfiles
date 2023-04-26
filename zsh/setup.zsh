@@ -4,7 +4,6 @@
 #
 
 DOT_LOCK="${HOME}/.dotlock"
-
 function setup {
    if [[ $(uname) == "Darwin" ]]; then
       alias compinit='compinit -u -i'
@@ -33,7 +32,8 @@ function setup {
    echo "rm -rf ${ZI_DIR}" >> "${DOT_LOCK}"
 
    # Setup fzf
-   /usr/local/opt/fzf/install
+   ${USER_LOCAL}/opt/fzf/install
+   unset USER_LOCAL
 
    echo "rm ${HOME}/.fzf.zsh" >> "${DOT_LOCK}"
    echo "rm ${DOT_LOCK}" >> "${DOT_LOCK}"
