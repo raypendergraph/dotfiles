@@ -12,3 +12,4 @@ nvim/plugin/**/*
 # python 
 __pycache__/
 
+configstore
