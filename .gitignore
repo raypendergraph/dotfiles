@@ -4,6 +4,8 @@ zsh/.zi/
 zsh/.zsh_history
 zsh/.histfile
 
+#github 
+gh/
 
 #neovim
 nvim/plugin/**/*
