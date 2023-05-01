@@ -7,7 +7,6 @@ setopt PUSHD_SILENT
 HISTFILE="${HOME}/.histfile"
 HISTSIZE=5000
 SAVEHIST=5000
-export ZI="${HOME}/.zi" 
 
 bindkey -v
 fpath=(${ZDOTDIR}/.zfunc ${fpath})
@@ -34,7 +33,7 @@ autoload -Uz compinit && compinit
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn
 # This line obtains information from the vcs.
-zstyle ':vcs_info:git*' formats "- (%b) "
+zstyle ':vcs_info:git*' formats "(%b) "
 precmd() {
     vcs_info
 }
@@ -42,6 +41,6 @@ precmd() {
 setopt prompt_subst
 
 # Config for the prompt. PS1 synonym.
-prompt='%2/ ${vcs_info_msg_0_}>'
+prompt='${vcs_info_msg_0_}%2/ $'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

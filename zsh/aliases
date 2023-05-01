@@ -1,1 +1,2 @@
 alias ll='ls -lAGhp'
+alias nv='nvim'
