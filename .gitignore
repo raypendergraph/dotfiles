@@ -6,7 +6,7 @@ zsh/.histfile
 
 
 #neovim
-nvim/plugin/**/*
+nvim/plugin/
 
 
 # python 

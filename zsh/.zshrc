@@ -7,7 +7,6 @@ setopt PUSHD_SILENT
 HISTFILE="${HOME}/.histfile"
 HISTSIZE=5000
 SAVEHIST=5000
-export ZI="${HOME}/.zi" 
 
 bindkey -v
 fpath=(${ZDOTDIR}/.zfunc ${fpath})

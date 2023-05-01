@@ -12,31 +12,23 @@ function setup {
    # Setup Zi - installed with sh -c "$(curl -fsSL get.zshell.dev)" --
    ZI_DIR="${HOME}/.zi"
    if [ ! -f "${ZI_DIR}/bin/zi.zsh" ]; then
-     print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
-     command mkdir -p "${ZI_DIR}" && command chmod go-rwX "${ZI}"
-     command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "${ZI_DIR}/bin" && \
-       print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-       print -P "%F{160}▓▒░ The clone has failed.%f%b"
+      print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
+      command mkdir -p "${ZI_DIR}" && command chmod go-rwX "${ZI_DIR}"
+      command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "${ZI_DIR}/bin" && \
+         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+         print -P "%F{160}▓▒░ The clone has failed.%f%b"
+               source "${ZI_DIR}/bin/zi.zsh"
+
+      zi pack for system-completions
+      zi pack for ls_colors
+      zi pack for fzf
+
+      echo "rm -rf ${ZI_DIR}" >> "${DOT_LOCK}"
+
    fi
-
-   source "${ZI_DIR}/bin/zi.zsh"
-
-   zi wait lucid for \
-     atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-        z-shell/F-Sy-H \
-     blockf \
-        zsh-users/zsh-completions \
-     atload"!_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions
-
-   echo "rm -rf ${ZI_DIR}" >> "${DOT_LOCK}"
-
-   # Setup fzf
-   ${USER_LOCAL}/opt/fzf/install
-   unset USER_LOCAL
-
-   echo "rm ${HOME}/.fzf.zsh" >> "${DOT_LOCK}"
+   
    echo "rm ${DOT_LOCK}" >> "${DOT_LOCK}"
+
 }
 
 # If the lock file is in place don't do any of this.
